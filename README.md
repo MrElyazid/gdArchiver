@@ -4,9 +4,9 @@ A simple python script to Archive / mass download Google drive/docs/sheets conte
 
 ## what it does :
 
-Recursively crawl a url and download the content of any Google drive link found on it, preserving the heirarchy the link was found on when downloading.
+Recursively crawl a url and download the content of any Google drive link found on it, preserving the file heirarchy when downloading.
 
-- `python3 main.py https://example.com` will recursively crawl `example.com` infinitely (can also specify a depth) and saves any link it encounters that is a google drive ( or sheets or docs ) link to a csv with its href, exact source page it was found on .. etc, and then after no more links can be crawled or reaching the depth specified, it downloads all the files/folders from the csv with respect to the way they were found with on the website.
+- `python3 main.py https://example.com` will recursively crawl `example.com` infinitely (can also specify a depth) and saves any link it encounters that is a google drive ( or sheets or docs ) to a csv with its href, exact source page it was found on .. etc, and then after no more links can be crawled or reaching the depth specified, it downloads all the files/folders from the csv with respect to the way they were found with on the website.
 
 ## Installation :
 
@@ -39,7 +39,7 @@ _Note_ : prefferably use a new venv.
 
 ## Usage :
 
-```bash
+```txt
 usage: main.py [-h] [-d DEPTH] [-o OUTPUT] [--csv CSV] [--crawl-only] url
 
 positional arguments:
