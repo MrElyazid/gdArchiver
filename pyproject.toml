@@ -7,6 +7,9 @@ requires-python = ">=3.13"
 dependencies = [
     "bs4>=0.0.2",
     "gdown>=5.2.0",
+    "img2pdf>=0.6.3",
     "lxml>=6.0.2",
+    "pillow>=12.3.0",
+    "playwright>=1.63.0",
     "requests>=2.32.5",
 ]
