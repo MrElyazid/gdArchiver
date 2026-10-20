@@ -8,3 +8,24 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local archive trees and download manifests
+/saborpcmath_com/
+/pc1_ma/
+/pc1_ma.csv
+
+# Generated archive artifacts: state dbs, reports, quarantines, csvs
+/saborpcmath_com.*
+/saborpcmath_com.csv
+/ia/
+/chunks/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Editor / OS noise
+.DS_Store
