@@ -1,10 +1,12 @@
 # gdArchiver
 
-Two flat modules, no package/entrypoint: `main.py` is the CLI + crawler + drive downloader, `viewonly.py` holds the headless-chromium capture fallback and the filename sanitizers/normalizers that `main.py` reuses. `README.md` is the authoritative usage doc; keep it in sync when adding flags.
+Core is two flat modules, no package/entrypoint: `main.py` is the CLI + crawler + drive downloader, `viewonly.py` holds the headless-chromium capture fallback and the filename sanitizers/normalizers that `main.py` reuses. `helpers/` holds optional post-processing (`janitor`, `ocr`, `compress`) and is run as modules. One-off archive pipeline scripts (IA upload, tidy, repair, zipper, chunk plan) are intentionally kept out of this repo; keep the core generic to any site. `README.md` is the authoritative usage doc; keep it in sync when adding flags.
 
 ## Commands
 
 - Run: `uv run main.py <url> [flags]`; `uv sync` populates `.venv` from `pyproject.toml`/`uv.lock`.
+- Helpers: `uv run python -m helpers.janitor ...`, `-m helpers.ocr ...`, `-m helpers.compress ...`.
+- External archive tools (`../gdArchiver-tools/`) need `uv sync --extra archive-tools` for `ftfy`, `internetarchive` and `pikepdf`.
 - All tests (fast, fully mocked, no network): `.venv/bin/python -m unittest discover -s tests -t .`
 - Single test: `.venv/bin/python -m unittest tests.test_main.CrawlTests.test_links_are_deduped_by_file_id`
 - View-only pdf fallback needs a one-time `uv run playwright install chromium`; unit tests do not.

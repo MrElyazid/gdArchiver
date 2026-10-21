@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import janitor
+from helpers import janitor
 
 
 class ScratchNameTests(unittest.TestCase):

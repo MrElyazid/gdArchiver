@@ -339,32 +339,37 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "bs4" },
-    { name = "ftfy" },
     { name = "gdown" },
     { name = "img2pdf" },
-    { name = "internetarchive" },
     { name = "lxml" },
     { name = "ocrmypdf" },
-    { name = "pikepdf" },
     { name = "pillow" },
     { name = "playwright" },
     { name = "requests" },
 ]
 
+[package.optional-dependencies]
+archive-tools = [
+    { name = "ftfy" },
+    { name = "internetarchive" },
+    { name = "pikepdf" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "bs4", specifier = ">=0.0.2" },
-    { name = "ftfy", specifier = ">=6.3.1" },
+    { name = "ftfy", marker = "extra == 'archive-tools'", specifier = ">=6.3.1" },
     { name = "gdown", specifier = ">=5.2.0" },
     { name = "img2pdf", specifier = ">=0.6.3" },
-    { name = "internetarchive", specifier = ">=5.12.0" },
+    { name = "internetarchive", marker = "extra == 'archive-tools'", specifier = ">=5.12.0" },
     { name = "lxml", specifier = ">=6.0.2" },
     { name = "ocrmypdf", specifier = ">=17.13.0" },
-    { name = "pikepdf", specifier = ">=10.17.0" },
+    { name = "pikepdf", marker = "extra == 'archive-tools'", specifier = ">=10.17.0" },
     { name = "pillow", specifier = ">=12.3.0" },
     { name = "playwright", specifier = ">=1.63.0" },
     { name = "requests", specifier = ">=2.32.5" },
 ]
+provides-extras = ["archive-tools"]
 
 [[package]]
 name = "gdown"

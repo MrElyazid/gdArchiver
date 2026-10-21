@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-import compress
+from helpers import compress
 
 
 def make_args(**overrides):

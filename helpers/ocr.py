@@ -7,10 +7,10 @@ restarted at any time. OCR itself is delegated to ocrmypdf/tesseract, one file p
 worker with page-level parallelism disabled, so a few workers leave the desktop usable.
 
 Usage:
-    python ocr.py saborpcmath_com                    # scan and OCR the queue
-    python ocr.py saborpcmath_com --workers 2 --nice 15
-    python ocr.py saborpcmath_com --dry-run          # show the queue, do nothing
-    python ocr.py saborpcmath_com --retry-failed     # retry previously failed files
+    python -m helpers.ocr saborpcmath_com                    # scan and OCR the queue
+    python -m helpers.ocr saborpcmath_com --workers 2 --nice 15
+    python -m helpers.ocr saborpcmath_com --dry-run          # show the queue, do nothing
+    python -m helpers.ocr saborpcmath_com --retry-failed     # retry previously failed files
 """
 
 import argparse

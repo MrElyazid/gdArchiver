@@ -7,10 +7,10 @@ shrink meaningfully are left untouched. Every result is recorded in a sqlite sta
 so the pass can be killed and restarted at any time.
 
 Usage:
-    python compress.py saborpcmath_com                     # compress the whole tree
-    python compress.py saborpcmath_com --workers 4 --nice 10
-    python compress.py saborpcmath_com --dry-run           # count files, change nothing
-    python compress.py saborpcmath_com --retry-failed      # retry previously failed files
+    python -m helpers.compress saborpcmath_com                     # compress the whole tree
+    python -m helpers.compress saborpcmath_com --workers 4 --nice 10
+    python -m helpers.compress saborpcmath_com --dry-run           # count files, change nothing
+    python -m helpers.compress saborpcmath_com --retry-failed      # retry previously failed files
 """
 
 import argparse
@@ -23,7 +23,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import ocr
+from helpers import ocr
 
 TMP_SUFFIX = ".gdarchiver-compress.tmp.pdf"
 print_lock = threading.Lock()

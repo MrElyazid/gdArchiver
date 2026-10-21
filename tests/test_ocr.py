@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-import ocr
+from helpers import ocr
 
 
 def make_args(**overrides):

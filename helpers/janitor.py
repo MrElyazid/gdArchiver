@@ -7,9 +7,9 @@ reported, hardlinked or quarantined depending on the flags. Nothing is deleted, 
 quarantine can be removed by hand after review.
 
 Usage:
-    python janitor.py saborpcmath_com                       # report only
-    python janitor.py saborpcmath_com --apply               # quarantine scratch junk
-    python janitor.py saborpcmath_com --apply --purge-empty --purge-parts \
+    python -m helpers.janitor saborpcmath_com                       # report only
+    python -m helpers.janitor saborpcmath_com --apply               # quarantine scratch junk
+    python -m helpers.janitor saborpcmath_com --apply --purge-empty --purge-parts \
         --purge-dirs vendor,node_modules --trash-duplicates --prune-empty-dirs
 """
 
