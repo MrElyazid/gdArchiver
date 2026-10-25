@@ -13,11 +13,16 @@ wheels/
 /saborpcmath_com/
 /pc1_ma/
 /pc1_ma.csv
+/pc1_ma.*
 
 # Generated archive artifacts: state dbs, reports, quarantines, csvs
 /saborpcmath_com.*
 /saborpcmath_com.csv
 /ia/
+/pc1_ia/
+/prepa_math_library/
+/prepa_math_library.*
+/prepa_ia/
 /chunks/
 
 # Logs and temporary files
