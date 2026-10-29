@@ -1,6 +1,10 @@
 # gdArchiver
 
-Core is two flat modules, no package/entrypoint: `main.py` is the CLI + crawler + drive downloader, `viewonly.py` holds the headless-chromium capture fallback and the filename sanitizers/normalizers that `main.py` reuses. `helpers/` holds optional post-processing (`janitor`, `ocr`, `compress`) and is run as modules. One-off archive pipeline scripts (IA upload, tidy, repair, zipper, chunk plan) are intentionally kept out of this repo; keep the core generic to any site. `README.md` is the authoritative usage doc; keep it in sync when adding flags.
+Core is two flat modules, no package/entrypoint: `main.py` is the CLI + crawler + drive downloader, `viewonly.py` holds the headless-chromium capture fallback and the filename sanitizers/normalizers that `main.py` reuses. `helpers/` holds optional post-processing (`janitor`, `ocr`, `compress`) and is run as modules. One-off archive pipeline scripts (IA upload, tidy, repair, zipper, chunk plan) are intentionally kept out of this repo; keep the core generic to any site. `README.md` is the quick start; `main.py --help` is authoritative for flags.
+
+## Commits
+
+- Keep commit subjects short and lowercase. Do not add long generated-sounding bodies unless the change needs context.
 
 ## Commands
 
@@ -14,7 +18,7 @@ Core is two flat modules, no package/entrypoint: `main.py` is the CLI + crawler 
 
 ## Hard-won context
 
-- `pc1_ma/` (~17 GB) and `pc1_ma.csv` are a local regression archive and are ignored by `.gitignore`, as are `saborpcmath_com/`, `ia/`, `chunks/` and generated reports/state. Never `git add -A` or stage them, nor any output tree you create.
+- `pc1_ma/` (~17 GB) and `pc1_ma.csv` are a local regression archive and are ignored by `.gitignore`, as are the other archive trees (`saborpcmath_com/`, `pc1_ia/`, `prepa_math_library/`, `prepa_ia/`, `chunks/`) and generated reports/state. Never `git add -A` or stage them, nor any output tree you create.
 - `manifest.csv` in the output root is the resume source of truth: per file id `status` is `ok` / `skipped-type` / `failed`, with legacy `skipped-nonpdf` normalized to `skipped-type` on load. Re-runs skip `ok` rows and fill gaps; tests encode this, so change `Manifest` semantics only with tests.
 - The browser User-Agent default is deliberate: some hosts (pc1.ma) answer 403 to plain `python-requests`. Crawl headers come from `main.browser_headers()`/`main.DEFAULT_USER_AGENT`; the view-only paths read the module global `viewonly.UA`, mutated via `viewonly.set_user_agent()`. `--user-agent` wires both, and is forwarded to gdown only when set (otherwise gdown keeps its own agent).
 - Tests monkeypatch the network seams (`main.fetch_page`, `main.gdown.download`, `main.process_pdf`, `main.process_file`, `main.download_folder_pdfs`), and `crawl_site` calls `fetch_page(url, delay, user_agent)` positionally. Keep those signatures mock-friendly when threading new args.
